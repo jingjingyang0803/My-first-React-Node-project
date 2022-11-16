@@ -1,6 +1,7 @@
 # Project Team 10
 
-
+# Team members
+Jingjing Yang
 
 ## Getting started
 
