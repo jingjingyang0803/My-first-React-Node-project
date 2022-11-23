@@ -19,7 +19,7 @@ describe the app here...
 3. visit http://localhost:3000 and you can see that frontend is up and running.
 
 **To run both services together:**
-1. In the root of the todoApp directory run `docker-compose up -d`
+1. From project directory run `docker-compose up -d`
 2. visit http://localhost:5000 and http://localhost:3000 
 3. you can see both backend and frontend are up and running.
 
