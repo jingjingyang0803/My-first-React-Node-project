@@ -17,12 +17,15 @@ To run the initial template application locally:
   navigate to http://localhost:3000 in the browser;
   see the REST API is working.
 
+1. in `todoApp/backend` run `docker build -t backend .`
+2. then execute `docker run -d -p 5000:5000 backend`
+3. in `todoApp/frontend` run `docker build -t frontend .`
+4. then execute `docker run -d -p 3000:3000 frontend`
+5. you can visit http://localhost:5000/ and http://localhost:3000 both should work
+
 ## Completed Phases
 - Phase 1
-    - directory structure meet
-    - Backend and frontend applications are working
-    - Git has been initialised and the 'initial commit' has been created
-    - All team members have working connection to the remote Git repository in GitLab.
+- Phase 2
 
 ## Expected project grade
 /+ explain here
