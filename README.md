@@ -9,19 +9,19 @@ describe the app here...
 
 
 ## Installation
-To run the initial template application locally:
-1)run command "npm run dev" under directory "backend";
-  go to visit http://localhost:5000 in your browser;
-  see the Express API is working.
-2)run command "npm run start" under directory "frontend";
-  navigate to http://localhost:3000 in the browser;
-  see the REST API is working.
-
-1. in `todoApp/backend` run `docker build -t backend .`
+**To run these apps in docker separately:**
+1. In `~/backend` run `docker build -t backend .`
 2. then execute `docker run -d -p 5000:5000 backend`
-3. in `todoApp/frontend` run `docker build -t frontend .`
-4. then execute `docker run -d -p 3000:3000 frontend`
-5. you can visit http://localhost:5000/ and http://localhost:3000 both should work
+3. visit http://localhost:5000 and you can see that backend is up and running.
+
+1. In `~/frontend` run `docker build -t frontend .`
+2. then execute `docker run -d -p 3000:3000 frontend`
+3. visit http://localhost:3000 and you can see that frontend is up and running.
+
+**To run both services together:**
+1. In the root of the todoApp directory run `docker-compose up -d`
+2. visit http://localhost:5000 and http://localhost:3000 
+3. you can see both backend and frontend are up and running.
 
 ## Completed Phases
 - Phase 1
