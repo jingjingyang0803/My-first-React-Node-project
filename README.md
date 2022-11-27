@@ -5,6 +5,10 @@ describe the app here...
 
 **Server address:** 172.16.7.230 (with VPN ...)
 
+**Remote URL**
+frontend: http://172.16.7.230:8080  or   http://22wsp3005projectteam10.student.titeweb:8080
+backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.titeweb:4040
+
 **Endpoints:**
 
 
