@@ -124,17 +124,18 @@ deploy_development:
     - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     # Prepare files for transfer
-    - mkdir remote_dir
-    - cp docker-compose.server.yml remote_dir/docker-compose.yml
-    - echo "BACKEND_IMAGE=${BACKEND_IMAGE}" >> remote_dir/.env
-    - echo "FRONTEND_IMAGE=${FRONTEND_IMAGE}" >> remote_dir/.env
+    - mkdir production_dir
+    - cp docker-compose.production.yml production_dir/docker-compose.yml
+    - echo "BACKEND_RELEASE_IMAGE=${BACKEND_RELEASE_IMAGE}" >> production_dir/.env
+    - echo "FRONTEND_RELEASE_IMAGE=${FRONTEND_RELEASE_IMAGE}" >> production_dir/.env
+
     # Transfer to server
-    - rsync -r remote_dir "${REMOTE_HOST}:./"
+    - rsync -r production_dir "${REMOTE_HOST}:./"
     # Run commands on the server
     - ssh ${REMOTE_HOST} /bin/bash 
             "
             echo 'Starting..';
-            cd ~/remote_dir;
+            cd ~/production_dir;
             docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY;
             docker-compose pull;
             docker-compose up -d;
