@@ -1,20 +1,21 @@
-
 variables:
   REMOTE_HOST: deploy@22wsp3005projectteam10
   BACKEND_IMAGE: ${CI_REGISTRY_IMAGE}/backend
+  BACKEND_RELEASE_IMAGE: ${CI_REGISTRY_IMAGE}/backend:release
   FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/frontend
+  FRONTEND_RELEASE_IMAGE: ${CI_REGISTRY_IMAGE}/frontend:release
 stages:
   - test
   - build
   - deploy
-test:
+test_others:
   image: node:latest
   stage: test
   script:
     # Go to backend directory
     - cd backend
     # Run npm commands
-    - npm install && npm test
+    -  npm install && npm run lint && npm run test
     # Go to frontend directory
     - cd ../frontend
     # Remove package-lock.json because of a bug
@@ -22,7 +23,40 @@ test:
     - rm package-lock.json
     # Run npm commands
     - npm install && npm test
-build:
+  except:
+    - main
+    - production
+test_main:
+  image: node:latest
+  stage: test
+  script:
+    # Go to backend directory
+    - cd backend
+    # Run npm commands
+    -  npm install && npm run test
+    # Go to frontend directory
+    - cd ../frontend
+    # Remove package-lock.json because of a bug
+    # (https://stackoverflow.com/questions/63321707/react-npm-install-fails)
+    - rm package-lock.json
+    # Run npm commands
+    - npm install && npm test
+  only:
+    - main
+build_others:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    # Build backend
+    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .
+    # Build frontend
+    - docker build -f frontend/DockerfileServer -t "${FRONTEND_IMAGE}" .
+  except:
+    - main
+    - production
+build_main:
   image: docker:latest
   stage: build
   services:
@@ -30,12 +64,31 @@ build:
   script:
     - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
     # Build & push backend
-    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .
+    - docker build -f backend/DockerfileServer -t "${BACKEND_IMAGE}" .    
     - docker push "${BACKEND_IMAGE}"
     # Build & push frontend
     - docker build -f frontend/DockerfileServer -t "${FRONTEND_IMAGE}" .
     - docker push "${FRONTEND_IMAGE}"
-deploy:
+  only:
+    - main
+
+build_production:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    # Build & push backend
+    - docker build -f backend/DockerfileServer -t "${BACKEND_RELEASE_IMAGE}" .
+    - docker push "${BACKEND_RELEASE_IMAGE}"
+    # Build & push frontend
+    - docker build -f frontend/DockerfileProduction -t "${FRONTEND_RELEASE_IMAGE}" .
+    - docker push "${FRONTEND_RELEASE_IMAGE}"
+  only:
+    - production
+    
+deploy_development:
   image: alpine:latest
   stage: deploy
   script:
@@ -59,3 +112,41 @@ deploy:
             docker-compose pull;
             docker-compose up -d;
             "
+  environment:
+    name: development
+    url: 172.16.7.230:8080
+  only:
+    - main
+  
+
+deploy_prodcution:
+  image: alpine:latest
+  stage: deploy
+  script:
+    - apk update && apk add rsync openssh curl
+    # Prepare SSH settings
+    - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    # Prepare files for transfer
+    - mkdir production_dir
+    - cp docker-compose.production.yml production_dir/docker-compose.yml
+    - echo "BACKEND_RELEASE_IMAGE=${BACKEND_RELEASE_IMAGE}" >> production_dir/.env
+    - echo "FRONTEND_RELEASE_IMAGE=${FRONTEND_RELEASE_IMAGE}" >> production_dir/.env
+
+    # Transfer to server
+    - rsync -r production_dir "${REMOTE_HOST}:./"
+    # Run commands on the server
+    - ssh ${REMOTE_HOST} /bin/bash 
+            "
+            echo 'Starting..';
+            cd ~/production_dir;
+            docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY;
+            docker-compose pull;
+            docker-compose up -d;
+            "
+  environment:
+    name: production
+    url: 172.16.7.230:4040
+  only:
+    - production
+
