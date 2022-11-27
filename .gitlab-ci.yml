@@ -36,7 +36,7 @@ test_main:
     # Go to backend directory
     - cd backend
     # Run npm commands
-    -  npm install && npm run test
+    -  npm install && npm test
     # Go to frontend directory
     - cd ../frontend
     # Remove package-lock.json because of a bug
@@ -61,22 +61,6 @@ build_others:
     - main
     - production
 
-build_production:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:latest
-  stage: build
-  services:
-    - docker:dind
-  script:
-    - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
-    # Build & push backend
-    - docker build -f backend/DockerfileServer -t "${BACKEND_RELEASE_IMAGE}" .
-    - docker push "${BACKEND_RELEASE_IMAGE}"
-    # Build & push frontend
-    - docker build -f frontend/DockerfileProduction -t "${FRONTEND_RELEASE_IMAGE}" .
-    - docker push "${FRONTEND_RELEASE_IMAGE}"
-  only:
-    - production
-
 build_main:
   image: docker:latest
   stage: build
@@ -93,7 +77,7 @@ build_main:
   only:
     - main
 
-build_release:
+build_production:
   image: docker:latest
   stage: build
   services:
@@ -133,39 +117,11 @@ deploy_main:
             docker-compose pull;
             docker-compose up -d;
             "
-  only:
-    - main
-
-deploy_development:
-  image: alpine:latest
-  stage: deploy
-  script:
-    - apk update && apk add rsync openssh curl
-    # Prepare SSH settings
-    - mkdir -p ~/.ssh && (umask  077 ; echo "${DEPLOY_KEY_PRIVATE}" | base64 -d > ~/.ssh/id_rsa)
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    # Prepare files for transfer
-    - mkdir production_dir
-    - cp docker-compose.production.yml production_dir/docker-compose.yml
-    - echo "BACKEND_RELEASE_IMAGE=${BACKEND_RELEASE_IMAGE}" >> production_dir/.env
-    - echo "FRONTEND_RELEASE_IMAGE=${FRONTEND_RELEASE_IMAGE}" >> production_dir/.env
-
-    # Transfer to server
-    - rsync -r production_dir "${REMOTE_HOST}:./"
-    # Run commands on the server
-    - ssh ${REMOTE_HOST} /bin/bash 
-            "
-            echo 'Starting..';
-            cd ~/production_dir;
-            docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY;
-            docker-compose pull;
-            docker-compose up -d;
-            "
   environment:
     name: development
     url: 172.16.7.230:8080
   only:
-    - development
+    - main
 
 deploy_prodcution:
   image: alpine:latest
@@ -197,4 +153,5 @@ deploy_prodcution:
     url: 172.16.7.230:4040
   only:
     - production
+
 
