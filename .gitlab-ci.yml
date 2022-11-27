@@ -4,10 +4,12 @@ variables:
   BACKEND_RELEASE_IMAGE: ${CI_REGISTRY_IMAGE}/backend:release
   FRONTEND_IMAGE: ${CI_REGISTRY_IMAGE}/frontend
   FRONTEND_RELEASE_IMAGE: ${CI_REGISTRY_IMAGE}/frontend:release
+
 stages:
   - test
   - build
   - deploy
+
 test_others:
   image: node:latest
   stage: test
@@ -26,6 +28,7 @@ test_others:
   except:
     - main
     - production
+
 test_main:
   image: node:latest
   stage: test
@@ -43,6 +46,7 @@ test_main:
     - npm install && npm test
   only:
     - main
+
 build_others:
   image: docker:latest
   stage: build
@@ -56,6 +60,23 @@ build_others:
   except:
     - main
     - production
+
+build_production:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:latest
+  stage: build
+  services:
+    - docker:dind
+  script:
+    - docker login -u gitlab-ci-token -p "${CI_JOB_TOKEN}" "${CI_REGISTRY}"
+    # Build & push backend
+    - docker build -f backend/DockerfileServer -t "${BACKEND_RELEASE_IMAGE}" .
+    - docker push "${BACKEND_RELEASE_IMAGE}"
+    # Build & push frontend
+    - docker build -f frontend/DockerfileProduction -t "${FRONTEND_RELEASE_IMAGE}" .
+    - docker push "${FRONTEND_RELEASE_IMAGE}"
+  only:
+    - production
+
 build_main:
   image: docker:latest
   stage: build
@@ -72,8 +93,8 @@ build_main:
   only:
     - main
 
-build_production:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:latest
+build_release:
+  image: docker:latest
   stage: build
   services:
     - docker:dind
