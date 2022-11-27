@@ -1,1 +1,2 @@
-check pipeline: push to feature branch
+check pipeline: push to feature branch  2nd        failed: missing script:"build:dev"   solution: frontend/DockerfileServer  delete:dev
+check pipleline: push to feature branch 3rd
