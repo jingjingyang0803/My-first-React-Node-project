@@ -27,9 +27,14 @@ backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.t
 2. visit http://localhost:5000 and http://localhost:3000 
 3. you can see both backend and frontend are up and running.
 
+## Bulma
+npm install bulma
+
 ## Completed Phases
 - Phase 1
 - Phase 2
+- Phase 3
+- Phase 4
 
 ## Expected project grade
 /+ explain here
