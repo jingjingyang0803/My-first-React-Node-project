@@ -1,9 +1,9 @@
 const express = require('express');
 
 let tasks = [
-    { id: 1, title: 'Shopping for presents', status: false },
-    { id: 2, title: 'Write Christmas cards', status: false },
-    { id: 3, title: 'Decorate', status: false }
+    { id: 1, name: 'Shopping for presents', done: false },
+    { id: 2, name: 'Write Christmas cards', done: false },
+    { id: 3, name: 'Decorate', done: false }
 ];
 
 const router = express.Router();
@@ -22,19 +22,19 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { id, title } = {...req.body};
-    tasks.push({ id, title, status: false});
+    const { id, name } = {...req.body};
+    tasks.push({ id, name, done: false});
     res.status(201).json({ message: 'Created' });
 });
 
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
-    const { status } = req.body;
+    const { done } = req.body;
     const index = tasks.findIndex((m) => m.id === Number(id));
     const updatedtask = {
         id: Number(id),
-        title: tasks[index].title,
-        status
+        name: tasks[index].name,
+        done: done
     };
     tasks[index] = updatedtask;
     res.status(200).json({ message: 'Updated' });

@@ -2,12 +2,14 @@ import React from "react";
 
 class SubmitForm extends React.Component {
     state = { term: '' };
+
     handleSubmit = (e) => {
       e.preventDefault();
       if(this.state.term === '') return;
       this.props.onFormSubmit(this.state.term);
       this.setState({ term: '' });
     }
+    
     render() {
       return(
         <form onSubmit={this.handleSubmit}>

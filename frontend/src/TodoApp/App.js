@@ -13,9 +13,9 @@ import SubmitForm from "./SubmitForm";
 //     this.setState({ tasks: newArr });
 //   };
 
-//   handleSubmit = (task) => {
-//     this.setState({ tasks: [...this.state.tasks, task] });
-//   };
+  handleSubmit = (task) => {
+    this.setState({ tasks: [...this.state.tasks, task] });
+  };
 
 export default function App() {
   // const state = {
@@ -24,17 +24,17 @@ export default function App() {
   // console.log(state.tasks.length)
 
 
-  const [tasks, setMovies] = useState([]);
+  const [tasks, setTasks] = useState([]);
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchTasks = async () => {
       const response = await fetch(`http://localhost:5000/api/v1/tasks`);
       const data = await response.json();
-      setMovies(data);
+      setTasks(data);
     };
-    fetchMovies();
+    fetchTasks();
   }, []);
 
-  console.log(tasks.map((e => e.title)))
+  // console.log(tasks.map((e => e.title)))
 
   return (
     <div className="wrapper">
@@ -42,8 +42,7 @@ export default function App() {
         <Header numTodos={tasks.length} />
         <List tasks={tasks} />
         {/* <List tasks={state.tasks} onClick={(e) => handleDelete(e)} /> */}
-        <SubmitForm />
-        {/* <SubmitForm onFormSubmit={this.handleSubmit} /> */}
+        <SubmitForm onFormSubmit={this.handleSubmit} />
       </div>
     </div>
   );
