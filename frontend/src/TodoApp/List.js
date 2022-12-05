@@ -3,7 +3,7 @@ const List = (props) => {
   const todos = props.tasks.map((todo, index) => {
     // console.log(todo.title, index, index)
     return (
-      <Todo content={todo.title} key={index} id={index} onDelete={props.onDelete} />
+      <Todo content={todo.title} key={todo.id} id={todo.id} status={todo.status} onDelete={props.onDelete} />
     );
   });
 
@@ -23,6 +23,7 @@ const completeTask = (e) => {
 const Todo = (props) => {
   return (
     <div className="list-item" onClick={(e) => completeTask(e)}>
+      <input type="checkbox" />  
       {props.content}
       <button
         class="delete is-pulled-right"

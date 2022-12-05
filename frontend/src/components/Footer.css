@@ -1,0 +1,15 @@
+.footer {
+  clear: both;
+  display: block;
+  width: 400px;
+}
+
+.btn {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 0px;
+  background-color: #0066FF;
+  color: #FFF;
+  border: 2px solid #0066FF;
+}
