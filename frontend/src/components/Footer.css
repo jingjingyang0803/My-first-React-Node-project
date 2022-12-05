@@ -1,15 +1,16 @@
 .footer {
   clear: both;
   display: block;
-  width: 400px;
+  width: 550px;
 }
 
 .btn {
-  padding: 10px;
-  font-size: 16px;
-  margin: 10px;
-  margin-right: 0px;
-  background-color: #0066FF;
+  padding: 5px;
+  /* font-size: 18px;*/
+  background-color: rgb(61, 117, 220);
   color: #FFF;
-  border: 2px solid #0066FF;
+  border: 2px solid rgb(18, 190, 220);  
+  border-radius: 6px; 
+  display: block;
+  float: right;
 }
