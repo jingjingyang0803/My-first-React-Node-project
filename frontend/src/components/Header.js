@@ -5,7 +5,7 @@ export default class Header extends Component {
 
     onKeyUp = (event) => {
         const { keyCode, target } = event;
- 
+
         if (keyCode !== 13) return;
 
         const input_string = target.value.trim();
@@ -14,10 +14,10 @@ export default class Header extends Component {
             target.value = "";
             return;
         }
-   
+
         this.props.onInsertItem({
             id: Date.now(),
-            name: input_string, 
+            name: input_string,
             done: false
         });
 
@@ -32,7 +32,7 @@ export default class Header extends Component {
                     <input
                         className="input_string"
                         type="text"
-                        placeholder="Please input task name"
+                        placeholder="Please input task name, confirm by Enter"
                         onKeyUp={this.onKeyUp}
                     />
                 </div>

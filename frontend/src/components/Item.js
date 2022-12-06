@@ -38,6 +38,7 @@ export default class Item extends Component {
           onChange={this.onClickboxChange(id)}
         />
         <span className="id">{id}</span>
+        &nbsp;&nbsp;
         <span className="name">{name}</span>
         <button
           className="btn"

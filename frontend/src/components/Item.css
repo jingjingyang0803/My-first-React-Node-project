@@ -1,6 +1,6 @@
 .item {
   color: #333;
-  background-color: rgba(255,255,255,.5);
+  background-color: rgba(117, 169, 98, 0.5);
   padding: 15px;
   margin-bottom: 15px;
   border-radius: 5px;
@@ -13,23 +13,21 @@
 
 .name {
   padding: 10px;
-  margin-top: 10px;
   border: none;
-  border-radius: 5px;
-  font-family: 'Candal', sans-serif;
+  border-radius: 10px;
   background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: row;
-}
+  display: inline;
+  line-height: 30px;
+} 
 
 .item .btn {
-  color: rgb(97, 5, 164);
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  display: block;
   padding: 5px;
-  font-family: 'Candal', sans-serif;
-  background-color: rgb(223, 43, 43);
-  margin-left: 5px;
+  float: right;
+  margin-right: 0px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgb(217, 45, 14);
 }

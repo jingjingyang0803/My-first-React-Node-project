@@ -26,9 +26,9 @@ export default class Footer extends Component {
           checked={
             total_count === done_count && total_count > 0 ? "checked" : ""
           }
-        />
+        /> 
         <span className="count">
-          {done_count}/{total_count}
+        &nbsp;&nbsp;&nbsp;{done_count}&nbsp;/&nbsp;{total_count}
         </span>
         <button className="btn" onClick={this.onClearAllDone}>
           Clear completed tasks
