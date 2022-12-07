@@ -4,47 +4,48 @@ import List from "./List";
 import Footer from "./Footer";
 import "./TodoList.css";
 
+const url = "http://localhost:5000/api/v1/tasks/";
 
 export default function Todolist() {
 
     const [items, setTasks] = useState([]);
     useEffect(() => {
         const fetchTasks = async () => {
-            const response = await fetch(`http://localhost:5000/api/v1/tasks`);
+            const response = await fetch(url);
             const data = await response.json();
             setTasks(data);
         };
         fetchTasks();
     }, []);
 
+    const onInsertItem = async (name) => {
+        const response = await fetch(url + name, { method: 'POST' });
+        const data = await response.json();
+        setTasks(data);
+    };
 
-    const onInsertItem = (item) => {
-        setTasks([item, ...items]);
+    const onUpdateItem = async (id) => {
+        const response = await fetch(url + id, { method: 'PATCH' });
+        const data = await response.json();
+        setTasks(data);
     };
-    const onUpdateItem = (id, done) => {
-        const new_items = items.map((item) => {
-            if (item.id === id) return { ...item, done };
-            else return item;
-        });
-        setTasks( new_items);
+
+    const onDeleteItem = async (id) => {
+        const response = await fetch(url + id, { method: 'DELETE' });
+        const data = await response.json();
+        setTasks(data);
     };
-    const onDeleteItem = (id) => {
-        const new_items = items.filter((item) => {
-            return item.id !== id;
-        });
-        setTasks(new_items);
+
+    const onBatchChange = async (flag) => {
+        const response = await fetch(url + "mark/" + flag, { method: 'PATCH' });
+        const data = await response.json();
+        setTasks(data);
     };
-    const onBatchChange = (flag) => {
-        const new_items = items.map((item) => {
-            return { ...item, done: flag };
-        });
-        setTasks(new_items);
-    };
-    const onClearAllDone = () => {
-        const new_items = items.filter((item) => {
-            return item.done === false;
-        });
-        setTasks(new_items);
+
+    const onClearAllDone = async () => {
+        const response = await fetch(url, { method: 'DELETE' });
+        const data = await response.json();
+        setTasks(data);
     };
 
     return (

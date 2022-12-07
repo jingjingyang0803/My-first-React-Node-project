@@ -4,8 +4,8 @@ import "./List.css";
 
 export default class List extends Component {
 
-  onUpdateItem = (id, done) => {
-    this.props.onUpdateItem(id, done);
+  onUpdateItem = (id) => {
+    this.props.onUpdateItem(id);
   };
 
   onDeleteItem = (id) => {

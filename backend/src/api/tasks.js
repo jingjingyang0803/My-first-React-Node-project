@@ -12,38 +12,44 @@ router.get('/', (req, res) => {
     res.status(200).json(tasks);
 });
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-    const task = tasks.find((m) => m.id === Number(id));
-    if (task === undefined)
-        res.status(404).json({ message: 'Not found' });
-    else
-        res.status(200).json(task);
-});
-
-router.post('/', (req, res) => {
-    const { id, name } = {...req.body};
-    tasks.push({ id, name, done: false});
-    res.status(201).json({ message: 'Created' });
+router.post('/:name', (req, res) => {
+    const { name } = req.params;
+    const newtask = {
+        id: Date.now(),
+        name: name,
+        done: false
+    };
+    tasks.push(newtask);
+    res.status(200).json(tasks);
 });
 
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
-    const { done } = req.body;
     const index = tasks.findIndex((m) => m.id === Number(id));
     const updatedtask = {
         id: Number(id),
         name: tasks[index].name,
-        done: done
+        done: !tasks[index].done
     };
     tasks[index] = updatedtask;
-    res.status(200).json({ message: 'Updated' });
+    res.status(200).json(tasks);
 });
 
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
     tasks = tasks.filter((m) => m.id !== Number(id));
-    res.status(200).json({ message: 'Deleted' });
+    res.status(200).json(tasks);
+});
+
+router.patch('/mark/:flag', (req, res) => {
+    const { flag } = { ...req.params };
+    tasks = tasks.map((m) => { return { ...m, done: flag === "true" ? true : false }; });
+    res.status(200).json(tasks);
+});
+
+router.delete('/', (req, res) => {
+    tasks = tasks.filter((m) => m.done === false);
+    res.status(200).json(tasks);
 });
 
 module.exports = router;
