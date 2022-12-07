@@ -3,7 +3,7 @@ import "./Header.css";
 
 export default class Header extends Component {
 
-    onKeyUp = (event) => {
+    onKeyUp = async (event) => {
         const { keyCode, target } = event;
 
         if (keyCode !== 13) return;
@@ -15,12 +15,7 @@ export default class Header extends Component {
             return;
         }
 
-        this.props.onInsertItem({
-            id: Date.now(),
-            name: input_string,
-            done: false
-        });
-
+        this.props.onInsertItem(input_string);
         target.value = "";
     };
 
