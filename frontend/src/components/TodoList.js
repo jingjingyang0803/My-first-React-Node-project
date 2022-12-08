@@ -19,7 +19,15 @@ export default function Todolist() {
     }, []);
 
     const onInsertItem = async (name) => {
-        const response = await fetch(url + name, { method: 'POST' });
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                id: Date.now(),
+                name: name,
+                done: false
+            })
+        });
         const data = await response.json();
         setTasks(data);
     };
@@ -37,7 +45,7 @@ export default function Todolist() {
     };
 
     const onBatchChange = async (flag) => {
-        const response = await fetch(url + "mark/" + flag, { method: 'PATCH' });
+        const response = await fetch(url + "batchMark/" + flag, { method: 'PATCH' });
         const data = await response.json();
         setTasks(data);
     };
