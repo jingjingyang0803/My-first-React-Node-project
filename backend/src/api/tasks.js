@@ -12,14 +12,20 @@ router.get('/', (req, res) => {
     res.status(200).json(tasks);
 });
 
-router.post('/:name', (req, res) => {
-    const { name } = req.params;
-    const newtask = {
-        id: Date.now(),
-        name: name,
-        done: false
-    };
-    tasks.push(newtask);
+
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    const task = tasks.find((m) => m.id === Number(id));
+    if (task === undefined)
+        res.status(404).json({ message: 'Not found' });
+    else
+        res.status(200).json(task);
+
+});
+
+router.post('/', (req, res) => {
+    const { id, name, done } = req.body;
+    tasks.push({ id, name, done });
     res.status(200).json(tasks);
 });
 
@@ -41,7 +47,7 @@ router.delete('/:id', (req, res) => {
     res.status(200).json(tasks);
 });
 
-router.patch('/mark/:flag', (req, res) => {
+router.patch('/batchMark/:flag', (req, res) => {
     const { flag } = { ...req.params };
     tasks = tasks.map((m) => { return { ...m, done: flag === "true" ? true : false }; });
     res.status(200).json(tasks);
