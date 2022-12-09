@@ -33,6 +33,7 @@ export default class Item extends Component {
         onMouseLeave={this.onMouse(false)}
       >
         <input
+          data-testid="checkbox"
           type="checkbox"
           checked={done}
           onChange={this.onClickboxChange(id)}
