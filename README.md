@@ -29,6 +29,8 @@ backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.t
 - Phase 2
 - Phase 3
 - Phase 4
+- Phase 5
+- Phase 6
 
 ## Expected project grade
 /+ explain here
