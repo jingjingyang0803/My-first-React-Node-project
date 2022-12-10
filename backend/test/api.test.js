@@ -16,23 +16,6 @@ it('should return a list of tasks when called with GET', (done) => {
         .expect(200, expected, done);
 });
 
-// it('should return the tasks when called with GET id', (done) => {
-//     const expected = { id: 3, name: 'Decorate', done: false };
-//     request(app)
-//         .get('/api/v1/tasks/3')
-//         .set('Accept', 'application/json')
-//         .expect('Content-Type', /json/)
-//         .expect(200, expected, done);
-// });
-
-// it('should return 404 if nothing was found with the id', (done) => {
-//     request(app)
-//         .get('/api/v1/tasks/10')
-//         .set('Accept', 'application/json')
-//         .expect('Content-Type', /json/)
-//         .expect(404, { message: 'Not found' }, done);
-// });
-
 it('should return 200 with new list when a new task was added', () => {
     const expected = [
         { id: 1, name: 'Shopping for presents', done: false },
