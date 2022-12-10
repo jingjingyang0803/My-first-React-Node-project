@@ -3,7 +3,6 @@ import Item from "./Item";
 import "./List.css";
 
 export default class List extends Component {
-
   onUpdateItem = (id) => {
     this.props.onUpdateItem(id);
   };
