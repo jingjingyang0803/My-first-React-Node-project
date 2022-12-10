@@ -6,7 +6,7 @@ A simple todo app in which you can add new tasks, mark as done, and delete.
 
 **Team 10:** Jingjing Yang, Josef Polasek
 
-**Remote URL**
+**Remote URL** (use with VPN)
 frontend: http://172.16.7.230:8080  or   http://22wsp3005projectteam10.student.titeweb:8080
 backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.titeweb:4040
 
