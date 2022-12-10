@@ -1,14 +1,13 @@
 # ToDo App
 describe the app here...
 
+![preview of the app](./frontend/preview.png)
+
 **Team 10:** Jingjing Yang, Josef Polasek
 
 **Remote URL**
 frontend: http://172.16.7.230:8080  or   http://22wsp3005projectteam10.student.titeweb:8080
 backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.titeweb:4040
-
-**Endpoints:**
-
 
 ## Installation
 **To run these apps in docker separately:**
@@ -24,9 +23,6 @@ backend: http://172.16.7.230:4040   or   http://22wsp3005projectteam10.student.t
 1. From project directory run `docker-compose up -d`
 2. visit http://localhost:5000 and http://localhost:3000 
 3. you can see both backend and frontend are up and running.
-
-## Bulma
-npm install bulma
 
 ## Completed Phases
 - Phase 1
