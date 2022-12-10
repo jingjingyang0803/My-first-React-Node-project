@@ -1,9 +1,7 @@
 import React from "react";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";// fireEvent is to simulate the user events
+import { render, fireEvent, screen } from "@testing-library/react";// fireEvent is to simulate the user events
 import TodoList from './components/TodoList';
-import Header from './components/Header';
 import Item from './components/Item';
-import Footer from './components/Footer';
 
 
 test('TodoList component renders without crashing', () => {
