@@ -1,6 +1,7 @@
 # ToDo App
-describe the app here...
+A simple todo app in which you can add new tasks, mark as done, and delete.
 
+## Preview
 ![preview of the app](./frontend/preview.png)
 
 **Team 10:** Jingjing Yang, Josef Polasek
