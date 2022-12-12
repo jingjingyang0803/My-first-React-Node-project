@@ -39,9 +39,20 @@ The `TodoList` Component has three child components -
 
 
 **Endpoints**
-- http://localhost:5000/api/v1/tasks
-- http://localhost:5000/api/v1/tasks:id
-- http://localhost:5000/api/v1/task/list:id
+0. GET http://localhost:5000/api/v1/tasks
+1. GET http://localhost:5000/api/v1/tasks:id
+2. POST http://localhost:5000/api/v1/tasks/load
+3. POST http://localhost:5000/api/v1/tasks
+4. PATCH http://localhost:5000/api/v1/tasks:id
+5. DELETE http://localhost:5000/api/v1/tasks:id
+6. PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
+7. DELETE http://localhost:5000/api/v1/tasks
+
+0. GET http://localhost:5000/api/v1/task/list
+1. GET http://localhost:5000/api/v1/task/list/:id
+3. GET http://localhost:5000/api/v1/task/list/ids
+4. PUT http://localhost:5000/api/v1/task/list/
+5. DELETE http://localhost:5000/api/v1/task/list/:id
 
 ## Installation
 **To run these apps in docker separately:**
@@ -58,7 +69,7 @@ The `TodoList` Component has three child components -
 3. you can see both backend and frontend are up and running.
 
 ## Dependencies installed
-- "nanoid": "^4.0.0"
+- "uuid": "^9.0.0"
 - "mongoose": "^6.8.0"
 
 ## Completed Phases

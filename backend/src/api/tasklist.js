@@ -1,4 +1,5 @@
 const express = require('express');
+const todolist = require('./models/todolist');
 
 const router = express.Router();
 
@@ -29,13 +30,31 @@ router.post('/', async (req, res) => {
 
 // get a specific task list
 router.get('/:id', async (req, res) => {
-    try {
-        const todolist = await TodoList.findOne({ _id: req.params.id }, { _id: 0, todos: 1 });
-        for (var key in todolist)
-            if (key == 'todos')
-                res.send(todolist[key]);
-    } catch (err) {
-        return res.status(500).json({ message: err.message });
+    // get ids of all the task lists stored in the database
+    if (req.params.id == 'ids') {
+        try {
+            const todolists = await TodoList.find({});
+            const ids = [];
+            for (var i = 0; i < todolists.length; i++) {
+                console.log(todolists[i]);
+                for (var key in todolists[i])
+                    if (key == '_id')
+                        ids.push(todolists[i][key]);
+            }
+            res.status(200).json(ids);
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    }
+    else {
+        try {
+            const todolist = await TodoList.findOne({ _id: req.params.id }, { _id: 0, todos: 1 });
+            for (var key in todolist)
+                if (key == 'todos')
+                    res.send(todolist[key]);
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
     }
 });
 

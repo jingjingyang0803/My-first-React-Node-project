@@ -6,9 +6,9 @@ const app = require('../src/app');
 
 it('should return a list of tasks when called with GET', (done) => {
     const expected = [
-        { id: 1, name: 'Shopping for presents', done: false },
-        { id: 2, name: 'Write Christmas cards', done: false },
-        { id: 3, name: 'Decorate', done: false }
+        { id: '1', name: 'Shopping for presents', done: false },
+        { id: '2', name: 'Write Christmas cards', done: false },
+        { id: '3', name: 'Decorate', done: false }
     ];
     request(app)
         .get('/api/v1/tasks')
@@ -19,14 +19,14 @@ it('should return a list of tasks when called with GET', (done) => {
 
 it('should return 200 with new list when a new task was added', () => {
     const expected = [
-        { id: 1, name: 'Shopping for presents', done: false },
-        { id: 2, name: 'Write Christmas cards', done: false },
-        { id: 3, name: 'Decorate', done: false },
-        { id: 4, name: 'Order food', done: false }];
+        { id: '1', name: 'Shopping for presents', done: false },
+        { id: '2', name: 'Write Christmas cards', done: false },
+        { id: '3', name: 'Decorate', done: false },
+        { id: '4', name: 'Order food', done: false }];
     request(app)
         .post('/api/v1/tasks')
         .set('Accept', 'application/json')
-        .send({ id: 4, name: 'Order food', done: false })
+        .send({ id: '4', name: 'Order food', done: false })
         .expect('Content-Type', /json/)
         .expect(200, expected);
 });
@@ -34,10 +34,10 @@ it('should return 200 with new list when a new task was added', () => {
 
 it('should return 200 with updated list when one task was marked done', () => {
     const expected = [
-        { id: 1, name: 'Shopping for presents', done: false },
-        { id: 2, name: 'Write Christmas cards', done: false },
-        { id: 3, name: 'Decorate', done: true },
-        { id: 4, name: 'Order food', done: false }];
+        { id: '1', name: 'Shopping for presents', done: false },
+        { id: '2', name: 'Write Christmas cards', done: false },
+        { id: '3', name: 'Decorate', done: true },
+        { id: '4', name: 'Order food', done: false }];
     request(app)
         .patch('/api/v1/tasks/3')
         .set('Accept', 'application/json')
@@ -47,9 +47,9 @@ it('should return 200 with updated list when one task was marked done', () => {
 
 it('should return 200 with updated list when one task was deleted', () => {
     const expected = [
-        { id: 1, name: 'Shopping for presents', done: false },
-        { id: 3, name: 'Decorate', done: true },
-        { id: 4, name: 'Order food', done: false }];
+        { id: '1', name: 'Shopping for presents', done: false },
+        { id: '3', name: 'Decorate', done: true },
+        { id: '4', name: 'Order food', done: false }];
     request(app)
         .delete('/api/v1/tasks/2')
         .set('Accept', 'application/json')
@@ -59,9 +59,9 @@ it('should return 200 with updated list when one task was deleted', () => {
 
 it('should return 200 with updated list when all tasks were marked done', () => {
     const expected = [
-        { id: 1, name: 'Shopping for presents', done: true },
-        { id: 3, name: 'Decorate', done: true },
-        { id: 4, name: 'Order food', done: true }];
+        { id: '1', name: 'Shopping for presents', done: true },
+        { id: '3', name: 'Decorate', done: true },
+        { id: '4', name: 'Order food', done: true }];
     request(app)
         .delete('/api/v1/tasks/')
         .set('Accept', 'application/json')
