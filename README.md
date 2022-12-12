@@ -25,9 +25,6 @@ The `TodoList` Component has three child components -
 - Jingjing Yang
 - Josef Polasek
 
-**Team 10:** Jingjing Yang, Josef Polasek
-
-
 **Remote URL**
 - frontend: 
 - http://172.16.7.230:8080
@@ -81,6 +78,6 @@ The `TodoList` Component has three child components -
 - Phase 6 --- Database (5 p)
 
 ## Expected project grade
-/+ grade 6(35p)
+grade 5
 - Our team completed all the phases before deadline.
 
