@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
+import {v4 as uuid } from "uuid";
+
 import Header from "./Header";
 import List from "./List";
 import Footer from "./Footer";
@@ -22,7 +24,7 @@ export default function Todolist() {
 
     const onInsertItem = async (name) => {
         const newItem = {
-            id: nanoid(),
+            id: uuid(),
             name: name,
             done: false
         };
@@ -111,15 +113,9 @@ export default function Todolist() {
 
                 {/* <label for="listID">Choose a task list:</label>
                 <select name="lists" id="listID">
-                    <option value="">Volvo</option>
-                    {items.map((item) => {
+                    {listids.map((listid) => {
                         return (
-                            <Item
-                                key={item.id}
-                                {...item}
-                                onUpdateItem={this.onUpdateItem}
-                                onDeleteItem={this.onDeleteItem}
-                            />
+                            <option key={listid} />listid</option>
                         );
                     })}
                 </select> */}
