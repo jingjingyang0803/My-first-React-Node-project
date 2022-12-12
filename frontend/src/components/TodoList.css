@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 22px;
+  font-family: 'Candal', sans-serif;
+}
+
+body {
+  background: #11b4ac;
+}
+
+.buttons input {
+  height: 32px;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+.todolist {
+  color: white;
+  margin-top: 500px;
+  margin-left: 50%;
+  padding: 20px;
+  width: 600px;
+  height:750px;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  align-items: center;
+}
+
+button {
+  padding: 2px;
+  background-color: rgb(223, 105, 46);
+  color: #FFF;
+  border: 2px solid rgb(223, 105, 46);
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 8px;
+  margin-bottom: 10px;
+}

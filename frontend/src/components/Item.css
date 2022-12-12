@@ -1,0 +1,38 @@
+.item {
+  color: #333;
+  background-color: rgba(117, 169, 98, 0.5);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  list-style: none;
+}
+
+input {
+  width:26px;
+  height: 26px;
+}
+
+.id {
+  display: none;
+}
+
+.name {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  display: inline;
+  line-height: 30px;
+}
+
+.item .btn {
+  display: block;
+  padding: 5px;
+  float: right;
+  margin-right: 0px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: rgb(217, 45, 14);
+}

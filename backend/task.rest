@@ -1,0 +1,32 @@
+GET http://localhost:5000/ HTTP/1.1
+###
+GET http://localhost:5000/api/v1 HTTP/1.1
+###
+GET http://localhost:5000/api/v1/emojis HTTP/1.1
+###
+GET http://localhost:5000/api/v1/tasks HTTP/1.1
+###
+GET http://localhost:5000/api/v1/tasks/1 HTTP/1.1
+###
+POST http://localhost:5000/api/v1/tasks HTTP/1.1
+content-type: application/json
+
+{
+    "id": 4,
+    "name": "Wrap gifts",
+    "done":false
+} 
+###
+PATCH  http://localhost:5000/api/v1/tasks/3 HTTP/1.1
+content-type: application/json
+
+{
+    "done":true
+}
+###
+GET http://localhost:5000/api/v1/tasks/3 HTTP/1.1
+###
+DELETE http://localhost:5000/api/v1/tasks/2 HTTP/1.1
+content-type: application/json
+###
+GET http://localhost:5000/api/v1/tasks/2 HTTP/1.1

@@ -1,0 +1,22 @@
+.input-group {
+  margin-bottom: 25px;
+}
+
+.input_string {
+  width:70%;
+  border: 3px solid  whitesmoke;
+  border-radius: 10px;
+  height: 60px;
+  font-size: 20px; 
+  transition: width 0.4s ease-in-out;
+  background-color: ghostwhite;
+}
+.input_string:focus {
+  width: 100%;
+}
+
+.header h3 {
+  padding: 10px;
+  font-size: 2em;
+  text-align: center;
+}
