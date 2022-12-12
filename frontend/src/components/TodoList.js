@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { nanoid } from "nanoid";
 import Header from "./Header";
 import List from "./List";
 import Footer from "./Footer";
 import "./TodoList.css";
-// import { nanoid } from "nanoid";
 
 const url = "http://localhost:5000/api/v1/tasks/";
 const url2 = "http://localhost:5000/api/v1/task/list/";
@@ -22,7 +22,7 @@ export default function Todolist() {
 
     const onInsertItem = async (name) => {
         const newItem = {
-            id: Date.now(),
+            id: nanoid(),
             name: name,
             done: false
         };
@@ -108,10 +108,20 @@ export default function Todolist() {
         <div className="todolist">
             <div className="buttons" >
                 <button onClick={onClickSave}>Save as a new task list </button> <br></br>
-                
+
                 {/* <label for="listID">Choose a task list:</label>
                 <select name="lists" id="listID">
                     <option value="">Volvo</option>
+                    {items.map((item) => {
+                        return (
+                            <Item
+                                key={item.id}
+                                {...item}
+                                onUpdateItem={this.onUpdateItem}
+                                onDeleteItem={this.onDeleteItem}
+                            />
+                        );
+                    })}
                 </select> */}
 
                 <input
