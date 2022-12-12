@@ -1,9 +1,9 @@
 const express = require('express');
 
 let tasks = [
-    { id: 1, name: 'Shopping for presents', done: false },
-    { id: 2, name: 'Write Christmas cards', done: false },
-    { id: 3, name: 'Decorate', done: false }
+    { id: '1', name: 'Shopping for presents', done: false },
+    { id: '2', name: 'Write Christmas cards', done: false },
+    { id: '3', name: 'Decorate', done: false }
 ];
 
 const router = express.Router();
@@ -39,9 +39,10 @@ router.post('/', (req, res) => {
 // mark a task done/undone when user click its checkbox
 router.patch('/:id', (req, res) => {
     const { id } = req.params;
-    const index = tasks.findIndex((m) => m.id === Number(id));
+    console.log(id);
+    const index = tasks.findIndex((m) => m.id == id);
     const updatedtask = {
-        id: Number(id),
+        id: id,
         name: tasks[index].name,
         done: !tasks[index].done
     };
@@ -52,7 +53,7 @@ router.patch('/:id', (req, res) => {
 // delete a task when user click remove button
 router.delete('/:id', (req, res) => {
     const { id } = req.params;
-    tasks = tasks.filter((m) => m.id !== Number(id));
+    tasks = tasks.filter((m) => m.id !== id);
     res.status(200).json(tasks);
 });
 
