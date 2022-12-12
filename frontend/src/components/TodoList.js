@@ -3,7 +3,7 @@ import Header from "./Header";
 import List from "./List";
 import Footer from "./Footer";
 import "./TodoList.css";
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 const url = "http://localhost:5000/api/v1/tasks/";
 const url2 = "http://localhost:5000/api/v1/task/list/";
@@ -19,40 +19,6 @@ export default function Todolist() {
         };
         fetchTasks();
     }, []);
-
-    // const onInsertItem = (name) => {
-    //     const newItem = {
-    //         id: nanoid(),
-    //         name: name,
-    //         done: false
-    //     };
-    //     setTasks([newItem, ...items]);
-    // };
-    // const onUpdateItem = (id,done) => {
-    //     const new_items = items.map((item) => {
-    //         if (item.id === id) return { ...item, done };
-    //         else return item;
-    //     });
-    //     setTasks(new_items);
-    // };
-    // const onDeleteItem = (id) => {
-    //     const new_items = items.filter((item) => {
-    //         return item.id !== id;
-    //     });
-    //     setTasks(new_items);
-    // };
-    // const onBatchChange = (flag) => {
-    //     const new_items = items.map((item) => {
-    //         return { ...item, done: flag };
-    //     });
-    //     setTasks(new_items);
-    // };
-    // const onClearAllDone = () => {
-    //     const new_items = items.filter((item) => {
-    //         return item.done === false;
-    //     });
-    //     setTasks(new_items);
-    // };
 
     const onInsertItem = async (name) => {
         const newItem = {
@@ -112,8 +78,8 @@ export default function Todolist() {
         const response = await fetch(url2 + id);
         const taskList = await response.json();
         setTasks(taskList);
-        
-        await fetch(url+'load', {
+
+        await fetch(url + 'load', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(taskList)
@@ -142,6 +108,12 @@ export default function Todolist() {
         <div className="todolist">
             <div className="buttons" >
                 <button onClick={onClickSave}>Save as a new task list </button> <br></br>
+                
+                {/* <label for="listID">Choose a task list:</label>
+                <select name="lists" id="listID">
+                    <option value="">Volvo</option>
+                </select> */}
+
                 <input
                     type="text"
                     placeholder="give ID number of the task list"
