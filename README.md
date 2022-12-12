@@ -26,11 +26,11 @@ The `TodoList` Component has three child components -
 - Josef Polasek
 
 **Remote URL**
-- frontend: 
+frontend: 
 - http://172.16.7.230:8080
 - http://22wsp3005projectteam10.student.titeweb:8080
 
-- backend: 
+backend: 
 - http://172.16.7.230:4040
 - http://22wsp3005projectteam10.student.titeweb:4040
 
