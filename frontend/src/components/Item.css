@@ -7,6 +7,11 @@
   list-style: none;
 }
 
+input {
+  width:26px;
+  height: 26px;
+}
+
 .id {
   display: none;
 }
@@ -18,7 +23,7 @@
   background: rgba(0, 0, 0, 0.3);
   display: inline;
   line-height: 30px;
-} 
+}
 
 .item .btn {
   display: block;

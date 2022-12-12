@@ -10,10 +10,10 @@ body {
   background: #11b4ac;
 }
 
-input {
-  vertical-align: middle;
-  height: 26px;
-  width: 26px;
+.buttons input {
+  height: 32px;
+  width: 300px;
+  box-sizing: border-box;
 }
 
 .todolist {
@@ -28,4 +28,15 @@ input {
   border-radius: 20px;
   flex-direction: column;
   align-items: center;
+}
+
+button {
+  padding: 2px;
+  background-color: rgb(223, 105, 46);
+  color: #FFF;
+  border: 2px solid rgb(223, 105, 46);
+  border-radius: 6px;  
+  cursor: pointer;  
+  margin-left:8px;
+  margin-bottom:10px;
 }

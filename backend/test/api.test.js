@@ -1,3 +1,4 @@
+// Notice that the data is not reset between test cases
 const request = require('supertest');
 
 const app = require('../src/app');
