@@ -1,14 +1,13 @@
 # ToDo App description
 Users can:
-1. save a new list of tasks.
-2. view a specific list of tasks,by giving the list ID number.
-3. update a specific list of tasks.
-4. add a task after pressing the Enter key.
-5. mark any task as completed, after clicking the checkbox.
-6. delete any task, after clicking the "Remove" button.
-7. batch mark a list of tasks as done or undone, after clicking the checkbox.
-8. batch delete all completed tasks in a list, after clicking the "Clear completed tasks" button.
-9. read the state of tasks in a list: completed tasks and the total tasks.
+1. save a new list of tasks by clicking the 'Save as a new task list' button.
+2. view/update/delete a specific list of tasks,after selecting the list ID number.
+3. add a task after pressing the 'Enter' key.
+4. mark any task as completed, after clicking the checkbox.
+5. delete any task, after clicking the "Remove" button.
+6. batch mark a list of tasks as done or undone, after clicking the checkbox.
+7. batch delete all completed tasks in a list, after clicking the "Clear completed tasks" button.
+8. read the state of tasks in a list: completed tasks and the total tasks.
 
 
 # ToDo App architecture
@@ -20,6 +19,11 @@ The `TodoList` Component has three child components -
 
 `Header`, `List`, and `Footer` are siblings and they all need to have access to the common state, we keep the main state in the `TodoList` component.
 
+
+# Technologies Used
+- Frontend: HTML, CSS, JavaScript and React.js for templating.
+- Backend: Node.js with Express Framework.
+- Database: MongoDB (hosted on MongoDB Atlas)
 
 **Team 10** 
 - Jingjing Yang
@@ -78,6 +82,6 @@ backend:
 - Phase 6 --- Database (5 p)
 
 ## Expected project grade
-grade 5
-- Our team completed all the phases before deadline.
+/+ grade 5 (35p-->90%~100%)
+- Our team completed all the phases before deadline, including the gitlab pipeline, pretty UI, a working dababase. And we have added some extra functionalties like batch mark/delete to improve user experience.
 
