@@ -30,30 +30,30 @@ The `TodoList` Component has three child components -
 - Josef Polasek
 
 **Remote URL**
-frontend: 
+1. frontend: 
 - http://172.16.7.230:8080
 - http://22wsp3005projectteam10.student.titeweb:8080
 
-backend: 
+2. backend: 
 - http://172.16.7.230:4040
 - http://22wsp3005projectteam10.student.titeweb:4040
 
 
 **Endpoints**
-0. GET http://localhost:5000/api/v1/tasks
-1. GET http://localhost:5000/api/v1/tasks:id
-2. POST http://localhost:5000/api/v1/tasks/load
-3. POST http://localhost:5000/api/v1/tasks
-4. PATCH http://localhost:5000/api/v1/tasks:id
-5. DELETE http://localhost:5000/api/v1/tasks:id
-6. PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
-7. DELETE http://localhost:5000/api/v1/tasks
+1. GET http://localhost:5000/api/v1/tasks
+1.1 GET http://localhost:5000/api/v1/tasks:id
+1.2 POST http://localhost:5000/api/v1/tasks/load
+1.3 POST http://localhost:5000/api/v1/tasks
+1.4 PATCH http://localhost:5000/api/v1/tasks:id
+1.5 DELETE http://localhost:5000/api/v1/tasks:id
+1.6 PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
+1.7 DELETE http://localhost:5000/api/v1/tasks
 
-0. GET http://localhost:5000/api/v1/task/list
-1. GET http://localhost:5000/api/v1/task/list/:id
-3. GET http://localhost:5000/api/v1/task/list/ids
-4. PUT http://localhost:5000/api/v1/task/list/
-5. DELETE http://localhost:5000/api/v1/task/list/:id
+2. GET http://localhost:5000/api/v1/task/list
+2.1 GET http://localhost:5000/api/v1/task/list/:id
+2.2 GET http://localhost:5000/api/v1/task/list/ids
+2.3 PUT http://localhost:5000/api/v1/task/list/
+2.4 DELETE http://localhost:5000/api/v1/task/list/:id
 
 ## Installation
 **To run these apps in docker separately:**
