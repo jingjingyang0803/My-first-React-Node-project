@@ -1,14 +1,13 @@
 # ToDo App description
 Users can:
-1. save a new list of tasks.
-2. view a specific list of tasks,by giving the list ID number.
-3. update a specific list of tasks.
-4. add a task after pressing the Enter key.
-5. mark any task as completed, after clicking the checkbox.
-6. delete any task, after clicking the "Remove" button.
-7. batch mark a list of tasks as done or undone, after clicking the checkbox.
-8. batch delete all completed tasks in a list, after clicking the "Clear completed tasks" button.
-9. read the state of tasks in a list: completed tasks and the total tasks.
+1. save a new list of tasks by clicking the 'Save as a new task list' button.
+2. view/update/delete a specific list of tasks,after selecting the list ID number.
+3. add a task after pressing the 'Enter' key.
+4. mark any task as completed, after clicking the checkbox.
+5. delete any task, after clicking the "Remove" button.
+6. batch mark a list of tasks as done or undone, after clicking the checkbox.
+7. batch delete all completed tasks in a list, after clicking the "Clear completed tasks" button.
+8. read the state of tasks in a list: completed tasks and the total tasks.
 
 
 # ToDo App architecture
@@ -21,38 +20,40 @@ The `TodoList` Component has three child components -
 `Header`, `List`, and `Footer` are siblings and they all need to have access to the common state, we keep the main state in the `TodoList` component.
 
 
+# Technologies Used
+- Frontend: HTML, CSS, JavaScript and React.js for templating.
+- Backend: Node.js with Express Framework.
+- Database: MongoDB (hosted on MongoDB Atlas)
+
 **Team 10** 
 - Jingjing Yang
 - Josef Polasek
 
-**Team 10:** Jingjing Yang, Josef Polasek
-
-
 **Remote URL**
-- frontend: 
+1. frontend: 
 - http://172.16.7.230:8080
 - http://22wsp3005projectteam10.student.titeweb:8080
 
-- backend: 
+2. backend: 
 - http://172.16.7.230:4040
 - http://22wsp3005projectteam10.student.titeweb:4040
 
 
 **Endpoints**
-0. GET http://localhost:5000/api/v1/tasks
-1. GET http://localhost:5000/api/v1/tasks:id
-2. POST http://localhost:5000/api/v1/tasks/load
-3. POST http://localhost:5000/api/v1/tasks
-4. PATCH http://localhost:5000/api/v1/tasks:id
-5. DELETE http://localhost:5000/api/v1/tasks:id
-6. PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
-7. DELETE http://localhost:5000/api/v1/tasks
+1. GET http://localhost:5000/api/v1/tasks
+1.1 GET http://localhost:5000/api/v1/tasks:id
+1.2 POST http://localhost:5000/api/v1/tasks/load
+1.3 POST http://localhost:5000/api/v1/tasks
+1.4 PATCH http://localhost:5000/api/v1/tasks:id
+1.5 DELETE http://localhost:5000/api/v1/tasks:id
+1.6 PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
+1.7 DELETE http://localhost:5000/api/v1/tasks
 
-0. GET http://localhost:5000/api/v1/task/list
-1. GET http://localhost:5000/api/v1/task/list/:id
-3. GET http://localhost:5000/api/v1/task/list/ids
-4. PUT http://localhost:5000/api/v1/task/list/
-5. DELETE http://localhost:5000/api/v1/task/list/:id
+2. GET http://localhost:5000/api/v1/task/list
+2.1 GET http://localhost:5000/api/v1/task/list/:id
+2.2 GET http://localhost:5000/api/v1/task/list/ids
+2.3 PUT http://localhost:5000/api/v1/task/list/
+2.4 DELETE http://localhost:5000/api/v1/task/list/:id
 
 ## Installation
 **To run these apps in docker separately:**
@@ -81,6 +82,6 @@ The `TodoList` Component has three child components -
 - Phase 6 --- Database (5 p)
 
 ## Expected project grade
-/+ grade 6(35p)
-- Our team completed all the phases before deadline.
+/+ grade 5 (35p-->90%~100%)
+- Our team completed all the phases before deadline, including the gitlab pipeline, pretty UI, a working dababase. And we have added some extra functionalties like batch mark/delete to improve user experience.
 

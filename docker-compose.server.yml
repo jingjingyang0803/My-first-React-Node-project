@@ -1,4 +1,10 @@
 services:
+  # database:
+  #   image: mongo:latest
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: mongoviope
+  #     MONGO_INITDB_ROOT_PASSWORD: 0803
   frontend:
     image: ${FRONTEND_IMAGE}
     ports:
