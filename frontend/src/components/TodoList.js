@@ -7,7 +7,7 @@ import Footer from "./Footer";
 import "./TodoList.css";
 
 const url = `${process.env.REACT_APP_BACKEND}v1/tasks/`;
-const url2 = `${process.env.REACT_APP_BACKEND}/v1/task/list/`f;
+const url2 = `${process.env.REACT_APP_BACKEND}/v1/task/list/`;
 
 export default function Todolist() {
     // ********************add, mark, delete task********************
