@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build:dev": "cross-env REACT_APP_BACKEND=http://172.16.7.230:5050/api react-scripts build",
+    "build:dev": "cross-env REACT_APP_BACKEND=http://172.16.7.230:4040/api react-scripts build",
     "build:prod": "cross-env REACT_APP_BACKEND=http://172.16.7.230:5000/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
