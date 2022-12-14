@@ -150,7 +150,7 @@ deploy_prodcution:
             "
   environment:
     name: production
-    url: 172.16.7.230:4040
+    url: 172.16.7.230
   only:
     - production
 

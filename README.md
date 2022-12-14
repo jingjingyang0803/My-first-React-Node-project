@@ -70,6 +70,7 @@ The `TodoList` Component has three child components -
 3. you can see both backend and frontend are up and running.
 
 ## Dependencies installed
+- "cross-env": "^7.0.3"
 - "uuid": "^9.0.0"
 - "mongoose": "^6.8.0"
 
