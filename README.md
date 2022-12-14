@@ -41,19 +41,19 @@ The `TodoList` Component has three child components -
 
 **Endpoints**
 1. GET http://localhost:5000/api/v1/tasks
-1.1 GET http://localhost:5000/api/v1/tasks:id
-1.2 POST http://localhost:5000/api/v1/tasks/load
-1.3 POST http://localhost:5000/api/v1/tasks
-1.4 PATCH http://localhost:5000/api/v1/tasks:id
-1.5 DELETE http://localhost:5000/api/v1/tasks:id
-1.6 PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
-1.7 DELETE http://localhost:5000/api/v1/tasks
+- 1.1 GET http://localhost:5000/api/v1/tasks:id
+- 1.2 POST http://localhost:5000/api/v1/tasks/load
+- 1.3 POST http://localhost:5000/api/v1/tasks
+- 1.4 PATCH http://localhost:5000/api/v1/tasks:id
+- 1.5 DELETE http://localhost:5000/api/v1/tasks:id
+- 1.6 PATCH http://localhost:5000/api/v1/tasks/batchMark/:flag
+- 1.7 DELETE http://localhost:5000/api/v1/tasks
 
 2. GET http://localhost:5000/api/v1/task/list
-2.1 GET http://localhost:5000/api/v1/task/list/:id
-2.2 GET http://localhost:5000/api/v1/task/list/ids
-2.3 PUT http://localhost:5000/api/v1/task/list/
-2.4 DELETE http://localhost:5000/api/v1/task/list/:id
+- 2.1 GET http://localhost:5000/api/v1/task/list/:id
+- 2.2 GET http://localhost:5000/api/v1/task/list/ids
+- 2.3 PUT http://localhost:5000/api/v1/task/list/
+- 2.4 DELETE http://localhost:5000/api/v1/task/list/:id
 
 ## Installation
 **To run these apps in docker separately:**
@@ -70,6 +70,7 @@ The `TodoList` Component has three child components -
 3. you can see both backend and frontend are up and running.
 
 ## Dependencies installed
+- "cross-env": "^7.0.3"
 - "uuid": "^9.0.0"
 - "mongoose": "^6.8.0"
 
@@ -82,6 +83,6 @@ The `TodoList` Component has three child components -
 - Phase 6 --- Database (5 p)
 
 ## Expected project grade
-/+ grade 5 (35p-->90%~100%)
+/+ grade 5 (90%~100%)
 - Our team completed all the phases before deadline, including the gitlab pipeline, pretty UI, a working dababase. And we have added some extra functionalties like batch mark/delete to improve user experience.
 
