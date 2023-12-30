@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "https://jingjingyang0803.github.io/My-first-React-Node-project/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -15,7 +16,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "build:dev": "cross-env REACT_APP_BACKEND=http://172.16.7.230:4040/api react-scripts build",
     "build:prod": "cross-env REACT_APP_BACKEND=http://172.16.7.230:5000/api react-scripts build",
     "test": "react-scripts test",
@@ -38,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
